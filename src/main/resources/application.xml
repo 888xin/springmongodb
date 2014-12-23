@@ -45,7 +45,11 @@ http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd">
     <tx:annotation-driven transaction-manager="transactionManager" />
 
     <!-- 扫描实现 -->
-    <context:component-scan base-package="com.qooco.mongo.impl" />
+    <context:component-scan base-package="com.lhx.dao.impl" />
+
+    <bean id="personRepository" class="com.lhx.dao.impl.PersonRepository">
+        <property name="mongoTemplate" ref="mongoTemplate"></property>
+    </bean>
 
 
 </beans>
