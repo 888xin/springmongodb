@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  * @package com.lhx.dao.impl
  * @blog http://blog.csdn.net/u011439289
  * @email 888xin@sina.com
- * @Description
+ * @Description 实体操作类实现mongodb操作接口类，实现各种对mongodb的操作，这是一种面向对象的操作
  */
 
 public class PersonRepository implements AbstractRepository{

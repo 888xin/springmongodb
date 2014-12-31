@@ -32,7 +32,7 @@ public class Mongotest {
 
     @Test
     public void insert(){
-        Person person = new Person("lhxf",27);
+        Person person = new Person("lhx",29);
         personRepository.insert(person);
         System.out.println("success");
     }

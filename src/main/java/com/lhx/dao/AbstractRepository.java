@@ -11,7 +11,7 @@ import java.util.List;
  * @package com.lhx.dao
  * @blog http://blog.csdn.net/u011439289
  * @email 888xin@sina.com
- * @Description
+ * @Description mongodb数据库的操作接口，提供增删改查最基本的操作
  */
 public interface AbstractRepository {
 
