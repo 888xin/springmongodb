@@ -18,6 +18,7 @@ public class Customer {
     private double salary ;
     private Date birthday ;
 
+
     public int getAge() {
         return age;
     }

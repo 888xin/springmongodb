@@ -37,4 +37,5 @@ public class MongoTemplateTest {
         c.setSalary(3456.3456);
         mongo.insert(c);
     }
+
 }
