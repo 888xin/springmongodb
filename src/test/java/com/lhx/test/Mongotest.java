@@ -3,6 +3,8 @@ package com.lhx.test;
 import com.lhx.dao.AbstractRepository;
 import com.lhx.dao.impl.PersonRepository;
 import com.lhx.domain.Person;
+import com.lhx.domain.SentencesSet;
+import com.lhx.util.JdbcUtils;
 import com.mongodb.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +13,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.net.UnknownHostException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lhx on 14-12-23 上午10:13
@@ -32,7 +36,7 @@ public class Mongotest {
 
     @Test
     public void insert(){
-        Person person = new Person("lhx",29);
+        Person person = new Person("24235645645", "张三",36);
         personRepository.insert(person);
         System.out.println("success");
     }
@@ -89,6 +93,25 @@ public class Mongotest {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testInsertSentence(){
+        Connection connection = JdbcUtils.getConnection("jdbc:mysql://192.168.2.3:3306/anti_center",
+                "skst", "TestDBSkst$@") ;
+        List<Map<String, Object>> list = JdbcUtils.getData(connection, "select * from sentences_set");
+        List<SentencesSet> list1 = new ArrayList<SentencesSet>();
+        SentencesSet sentencesSet = null ;
+        for (Map<String, Object> map : list) {
+            sentencesSet = new SentencesSet();
+            sentencesSet.setId((Integer) map.get("id"));
+            sentencesSet.setKeyword((String) map.get("keyword"));
+            sentencesSet.setSample((String) map.get("sample"));
+            sentencesSet.setSentence((String) map.get("sentence"));
+            list1.add(sentencesSet);
+        }
+        //用完数据库，释放连接
+        JdbcUtils.free(null,null,connection);
     }
 
 }

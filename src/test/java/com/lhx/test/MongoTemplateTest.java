@@ -29,13 +29,16 @@ public class MongoTemplateTest {
 
     @Test
     public void testInsert(){
-        Customer c = new Customer();
-        c.setFirstName("李");
-        c.setLastName("新新");
-        c.setAge(27);
-        c.setBirthday(new Date());
-        c.setSalary(3456.3456);
-        mongo.insert(c);
+        Customer c = null ;
+        for (int i = 0; i < 200000; i++) {
+            c = new Customer();
+            c.setFirstName("李" + i);
+            c.setLastName("新新" + i);
+            c.setAge(27 + i);
+            c.setBirthday(new Date());
+            c.setSalary(3456.3456 + i);
+            mongo.insert(c);
+        }
     }
 
 }
